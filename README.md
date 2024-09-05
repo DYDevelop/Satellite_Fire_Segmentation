@@ -3,7 +3,7 @@
 - Pytorch model ONNX convert
 - ONNX model surving with "PythonAnywhere"
 <br>
-<img src="https://github.com/user-attachments/assets/265382eb-d655-4ab7-827c-fecfc04ee297"  width="200" height="200"/>
+![image](https://github.com/user-attachments/assets/45953782-9b80-4efe-85e3-4e27d637a43f)
 
 ## 대회 주제
 위성데이터를 활용하여 아름다운 제주섬의 문제를 발견하고, 이를 해결할 수 있는 아이디어 및 사업모델을 제안해주세요. 
