@@ -2,7 +2,7 @@
 - Model training code for fire segmentation on satellite RGB images
 - Pytorch model ONNX convert
 - ONNX model code by Flask
-- ONNX model surving with "PythonAnywhere"
+- Flask web surved by "PythonAnywhere"
 <br>
 
 ![image](https://github.com/user-attachments/assets/45953782-9b80-4efe-85e3-4e27d637a43f)
