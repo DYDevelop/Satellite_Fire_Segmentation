@@ -1,6 +1,7 @@
 # Fire Segmentation on RGB Satellite Images
 - Model training code for fire segmentation on satellite RGB images
 - Pytorch model ONNX convert
+- ONNX model code by Flask
 - ONNX model surving with "PythonAnywhere"
 <br>
 
