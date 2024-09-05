@@ -19,6 +19,8 @@ https://steven6774.pythonanywhere.com/
 
 ## 개발 환경
 - Python: 3.9.16
+- Pytorch 1.13.1
+- CUDA 11.8
 
 ## 주요 설명
 - 2024년도 제주 위성데이터 활용 경진대회.pdf 참조
