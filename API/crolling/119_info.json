@@ -1,0 +1,520 @@
+{
+    "주차장정보": [
+        {
+            "name": "제주소방서119구조대",
+            "parking_type": "119구조대",
+            "road_address": "제주 제주시 중앙로 342 제주소방서",
+            "jibun_address": "이도이동 1996-4"
+        },
+        {
+            "name": "서부소방서 119구조대",
+            "parking_type": "119구조대",
+            "road_address": "제주 제주시 한림읍 한림중앙로 150",
+            "jibun_address": "동명리 663"
+        },
+        {
+            "name": "동부소방서119구조대",
+            "parking_type": "119구조대",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7 동부소방서",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "제주소방서 노형119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 광평동로 2 노형119센터",
+            "jibun_address": "노형동 2596-2"
+        },
+        {
+            "name": "제주소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 제주시 중앙로 342 제주소방서",
+            "jibun_address": "이도2동 1996-4"
+        },
+        {
+            "name": "서부소방서 현장대응과",
+            "parking_type": "소방서",
+            "road_address": "제주 제주시 한림읍 한림중앙로 150",
+            "jibun_address": "동명리 663"
+        },
+        {
+            "name": "제주공항소방서",
+            "parking_type": "119구조대",
+            "road_address": "제주 제주시 공항로 2",
+            "jibun_address": "용담2동 2002"
+        },
+        {
+            "name": "서귀포소방서 화재조사팀",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 서호남로 20",
+            "jibun_address": "법환동 1666-7"
+        },
+        {
+            "name": "서귀포소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 서호남로 20",
+            "jibun_address": "법환동 1666-7"
+        },
+        {
+            "name": "동부소방서 현장대응과",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "제주소방서화북119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 동화로1길 3",
+            "jibun_address": "화북일동 11-10"
+        },
+        {
+            "name": "제주서부소방서안덕119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 안덕면 화순서서로 2",
+            "jibun_address": "화순리 1160-10"
+        },
+        {
+            "name": "제주서부소방서 한경119안전센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 한경면 일주서로 4218 한경119센터",
+            "jibun_address": "신창리 664-1"
+        },
+        {
+            "name": "제주동부소방서조천119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 조천읍 신북로 337",
+            "jibun_address": "조천리 833-5"
+        },
+        {
+            "name": "서귀포소방서 동홍119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 서홍로 14",
+            "jibun_address": "서홍동 478-1"
+        },
+        {
+            "name": "제주서부소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 제주시 한림중앙로 150 서부소방서 (한림119센터)",
+            "jibun_address": "한림읍 동명리 663"
+        },
+        {
+            "name": "제주동부소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7 동부소방서",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "서귀포소방서중문119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 일주서로 669",
+            "jibun_address": "회수동 641-8"
+        },
+        {
+            "name": "제주동부소방서구좌119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 세화14길 8",
+            "jibun_address": "구좌읍 세화리 1359-4"
+        },
+        {
+            "name": "서귀포소방서효돈119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 일주동로 8234",
+            "jibun_address": "신효동 1120-5"
+        },
+        {
+            "name": "제주소방서삼도119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 탑동로 101",
+            "jibun_address": "삼도2동 1164-7"
+        },
+        {
+            "name": "제주소방서 외도119안전센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 외도일동 통물길 75",
+            "jibun_address": "175-1"
+        },
+        {
+            "name": "동부소방서 남원119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 남원체육관로221번길 23",
+            "jibun_address": "남원읍 남원리 1499-3"
+        },
+        {
+            "name": "제주소방서연동119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 문송길 14",
+            "jibun_address": "연동 302-5"
+        },
+        {
+            "name": "제주서부소방서대정119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 일주서로 2717",
+            "jibun_address": "대정읍 일과리 136"
+        },
+        {
+            "name": "제주소방서오라119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 서광로2길 24",
+            "jibun_address": "오라1동 1165"
+        },
+        {
+            "name": "제주서부소방서한림119안전센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 한림읍 한림중앙로 150",
+            "jibun_address": "동명리 663"
+        },
+        {
+            "name": "제주소방서 아라119센터",
+            "parking_type": "119안전센터",
+            "road_address": "주 제주시 영평동 2072",
+            "jibun_address": "번호\n우편번호\n63308"
+        },
+        {
+            "name": "제주동부소방서 표선119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 표선면 표선관정로 39-16 표선119센터",
+            "jibun_address": "표선리 1682-3"
+        },
+        {
+            "name": "제주소방서항만119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 임항로 146",
+            "jibun_address": "건입동 902-2"
+        },
+        {
+            "name": "서귀포소방서 대신119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 서호남로 20",
+            "jibun_address": "법환동 1666-7"
+        },
+        {
+            "name": "성산119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "동부소방서김녕119지역센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 구좌읍 김녕로 242",
+            "jibun_address": "김녕리 352-3"
+        },
+        {
+            "name": "제주소방서 추자119지역대",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 추자로 174",
+            "jibun_address": "추자면 영흥리 43"
+        },
+        {
+            "name": "제주동부소방서성읍119지역센터",
+            "parking_type": "119지역대",
+            "road_address": "제주 서귀포시 표선면 성읍서문로 75",
+            "jibun_address": "성읍리 1382"
+        },
+        {
+            "name": "가파전담의용소방대",
+            "parking_type": "의용소방대",
+            "road_address": "제주 서귀포시 대정읍 가파로67번길 12-1 의용소방대가파지역대",
+            "jibun_address": "가파리 67-6"
+        },
+        {
+            "name": "마라전담의용소방대",
+            "parking_type": "의용소방대",
+            "road_address": "제주 서귀포시 대정읍 마라로 65 마라리사무소",
+            "jibun_address": "가파리 701"
+        },
+        {
+            "name": "한국공항공사 제주공항",
+            "parking_type": "공사,공단",
+            "road_address": "제주 제주시 용담이동 공항로 2",
+            "jibun_address": "2002"
+        },
+        {
+            "name": "제주소방서오라119센터(구)",
+            "parking_type": "공공,행정시설",
+            "road_address": "제주 제주시 오라로10길 6",
+            "jibun_address": "오라이동 1191"
+        },
+        {
+            "name": "서귀포소방서효돈파출소",
+            "parking_type": "기업,빌딩",
+            "road_address": "제주 서귀포시 일주동로 8234",
+            "jibun_address": "신효동 1120-5"
+        },
+        {
+            "name": "동부소방서 지하1층 대피소",
+            "parking_type": "민방위대피시설",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "제주소방서(지하 1층) 대피소",
+            "parking_type": "민방위대피시설",
+            "road_address": "제주 제주시 중앙로 342",
+            "jibun_address": "이도이동 1996-4"
+        },
+        {
+            "name": "제주소방서앞",
+            "parking_type": "교차로",
+            "road_address": "",
+            "jibun_address": "제주 제주시 이도2동복"
+        },
+        {
+            "name": "제주소방서119구조대",
+            "parking_type": "119구조대",
+            "road_address": "제주 제주시 중앙로 342 제주소방서",
+            "jibun_address": "이도이동 1996-4"
+        },
+        {
+            "name": "서부소방서 119구조대",
+            "parking_type": "119구조대",
+            "road_address": "제주 제주시 한림읍 한림중앙로 150",
+            "jibun_address": "동명리 663"
+        },
+        {
+            "name": "동부소방서119구조대",
+            "parking_type": "119구조대",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7 동부소방서",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "제주소방서 노형119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 광평동로 2 노형119센터",
+            "jibun_address": "노형동 2596-2"
+        },
+        {
+            "name": "제주소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 제주시 중앙로 342 제주소방서",
+            "jibun_address": "이도2동 1996-4"
+        },
+        {
+            "name": "서부소방서 현장대응과",
+            "parking_type": "소방서",
+            "road_address": "제주 제주시 한림읍 한림중앙로 150",
+            "jibun_address": "동명리 663"
+        },
+        {
+            "name": "제주공항소방서",
+            "parking_type": "119구조대",
+            "road_address": "제주 제주시 공항로 2",
+            "jibun_address": "용담2동 2002"
+        },
+        {
+            "name": "서귀포소방서 화재조사팀",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 서호남로 20",
+            "jibun_address": "법환동 1666-7"
+        },
+        {
+            "name": "서귀포소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 서호남로 20",
+            "jibun_address": "법환동 1666-7"
+        },
+        {
+            "name": "동부소방서 현장대응과",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "제주소방서화북119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 동화로1길 3",
+            "jibun_address": "화북일동 11-10"
+        },
+        {
+            "name": "제주서부소방서안덕119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 안덕면 화순서서로 2",
+            "jibun_address": "화순리 1160-10"
+        },
+        {
+            "name": "제주서부소방서 한경119안전센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 한경면 일주서로 4218 한경119센터",
+            "jibun_address": "신창리 664-1"
+        },
+        {
+            "name": "제주동부소방서조천119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 조천읍 신북로 337",
+            "jibun_address": "조천리 833-5"
+        },
+        {
+            "name": "서귀포소방서 동홍119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 서홍로 14",
+            "jibun_address": "서홍동 478-1"
+        },
+        {
+            "name": "제주서부소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 제주시 한림중앙로 150 서부소방서 (한림119센터)",
+            "jibun_address": "한림읍 동명리 663"
+        },
+        {
+            "name": "제주동부소방서",
+            "parking_type": "소방서",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7 동부소방서",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "서귀포소방서중문119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 일주서로 669",
+            "jibun_address": "회수동 641-8"
+        },
+        {
+            "name": "제주동부소방서구좌119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 세화14길 8",
+            "jibun_address": "구좌읍 세화리 1359-4"
+        },
+        {
+            "name": "서귀포소방서효돈119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 일주동로 8234",
+            "jibun_address": "신효동 1120-5"
+        },
+        {
+            "name": "제주소방서삼도119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 탑동로 101",
+            "jibun_address": "삼도2동 1164-7"
+        },
+        {
+            "name": "제주소방서 외도119안전센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 외도일동 통물길 75",
+            "jibun_address": "175-1"
+        },
+        {
+            "name": "동부소방서 남원119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 남원체육관로221번길 23",
+            "jibun_address": "남원읍 남원리 1499-3"
+        },
+        {
+            "name": "제주소방서연동119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 문송길 14",
+            "jibun_address": "연동 302-5"
+        },
+        {
+            "name": "제주서부소방서대정119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 일주서로 2717",
+            "jibun_address": "대정읍 일과리 136"
+        },
+        {
+            "name": "제주소방서오라119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 서광로2길 24",
+            "jibun_address": "오라1동 1165"
+        },
+        {
+            "name": "제주서부소방서한림119안전센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 한림읍 한림중앙로 150",
+            "jibun_address": "동명리 663"
+        },
+        {
+            "name": "제주소방서 아라119센터",
+            "parking_type": "119안전센터",
+            "road_address": "주 제주시 영평동 2072",
+            "jibun_address": "번호\n우편번호\n63308"
+        },
+        {
+            "name": "제주동부소방서 표선119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 표선면 표선관정로 39-16 표선119센터",
+            "jibun_address": "표선리 1682-3"
+        },
+        {
+            "name": "제주소방서항만119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 임항로 146",
+            "jibun_address": "건입동 902-2"
+        },
+        {
+            "name": "서귀포소방서 대신119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 서호남로 20",
+            "jibun_address": "법환동 1666-7"
+        },
+        {
+            "name": "성산119센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "동부소방서김녕119지역센터",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 구좌읍 김녕로 242",
+            "jibun_address": "김녕리 352-3"
+        },
+        {
+            "name": "제주소방서 추자119지역대",
+            "parking_type": "119안전센터",
+            "road_address": "제주 제주시 추자로 174",
+            "jibun_address": "추자면 영흥리 43"
+        },
+        {
+            "name": "제주동부소방서성읍119지역센터",
+            "parking_type": "119지역대",
+            "road_address": "제주 서귀포시 표선면 성읍서문로 75",
+            "jibun_address": "성읍리 1382"
+        },
+        {
+            "name": "가파전담의용소방대",
+            "parking_type": "의용소방대",
+            "road_address": "제주 서귀포시 대정읍 가파로67번길 12-1 의용소방대가파지역대",
+            "jibun_address": "가파리 67-6"
+        },
+        {
+            "name": "마라전담의용소방대",
+            "parking_type": "의용소방대",
+            "road_address": "제주 서귀포시 대정읍 마라로 65 마라리사무소",
+            "jibun_address": "가파리 701"
+        },
+        {
+            "name": "한국공항공사 제주공항",
+            "parking_type": "공사,공단",
+            "road_address": "제주 제주시 용담이동 공항로 2",
+            "jibun_address": "2002"
+        },
+        {
+            "name": "제주소방서오라119센터(구)",
+            "parking_type": "공공,행정시설",
+            "road_address": "제주 제주시 오라로10길 6",
+            "jibun_address": "오라이동 1191"
+        },
+        {
+            "name": "서귀포소방서효돈파출소",
+            "parking_type": "기업,빌딩",
+            "road_address": "제주 서귀포시 일주동로 8234",
+            "jibun_address": "신효동 1120-5"
+        },
+        {
+            "name": "동부소방서 지하1층 대피소",
+            "parking_type": "민방위대피시설",
+            "road_address": "제주 서귀포시 성산읍 일주동로4120번길 7",
+            "jibun_address": "오조리 933"
+        },
+        {
+            "name": "제주소방서(지하 1층) 대피소",
+            "parking_type": "민방위대피시설",
+            "road_address": "제주 제주시 중앙로 342",
+            "jibun_address": "이도이동 1996-4"
+        },
+        {
+            "name": "제주소방서앞",
+            "parking_type": "교차로",
+            "road_address": "",
+            "jibun_address": "제주 제주시 이도2동복"
+        }
+    ]
+}

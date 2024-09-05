@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeju Satellite Data Utilization Contest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        /* 새로운 CSS 추가 */
+        #reportSection {
+            margin-bottom: 8px; /* 신고 섹션과 지도 사이의 간격을 줄입니다 */
+        }
+
+        #closestFireStationInfo {
+            margin-top: 8px; /* 신고 섹션 텍스트와 지도 사이의 간격을 줄입니다 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Jeju Satellite Data Utilization Contest</h1>
+        <h2 class="text-2xl font-semibold text-center text-gray-700 mb-4">SafeZone: From Fire</h2>
+
+        <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 mb-8">
+            <!-- File Upload Section -->
+            <div class="mb-4">
+                <label for="imageUpload" class="block text-sm font-medium text-gray-700 mb-2">Upload Satellite Image</label>
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                    <div class="space-y-1 text-center">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="flex text-sm text-gray-600">
+                            <label for="imageUpload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                <span>Upload a file</span>
+                                <input id="imageUpload" name="imageUpload" type="file" accept="image/*" class="sr-only">
+                            </label>
+                            <p class="pl-1">or drag and drop</p>
+                        </div>
+                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Image Selection -->
+            <div class="mt-4">
+                <label for="demoImage" class="block text-sm font-medium text-gray-700 mb-2">Or Choose a Demo Image</label>
+                <select id="demoImage" name="demoImage" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                    <option value="">Select a demo image</option>
+                    <option value="demo1.jpg">Demo Image 1</option>
+                    <option value="demo2.jpg">Demo Image 2</option>
+                    <option value="demo3.jpg">Demo Image 3</option>
+                    <option value="demo4.jpg">Demo Image 4</option>
+                    <option value="demo5.jpg">Demo Image 5</option>
+                    <option value="demo6.jpg">Demo Image 6</option>
+                    <option value="demo7.jpg">Demo Image 7</option>
+                    <option value="demo8.jpg">Demo Image 8</option>
+                    <option value="demo9.jpg">Demo Image 9</option>
+                    <option value="demo10.jpg">Demo Image 10</option>
+                </select>
+            </div>
+            <!-- Process Large Image Toggle Button -->
+            <div class="mt-4 flex items-center">
+                <label for="processLargeImageToggle" class="mr-2 block text-sm font-medium text-gray-700">Process Large Image :</label>
+                <button id="processLargeImageToggle" class="bg-blue-500 text-white py-1 px-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-sm">
+                    Off
+                </button>
+            </div>
+            <div id="imageNameSection" class="mt-4 hidden">
+                <p id="imageName" class="text-gray-600 text-center"></p>
+            </div>
+
+            <div id="noDataFound" class="hidden mt-4 text-center text-red-500">No data found for this image.</div>
+        </div>
+
+        <div id="loadingIndicator" class="hidden">
+            <div class="flex justify-center items-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+            </div>
+            <p class="text-center mt-4 text-gray-600">Processing image...</p>
+        </div>
+
+        <div id="result" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Input Satellite Image</h3>
+                    <img id="inputImage" src="" alt="Input Satellite Image" class="w-full h-auto rounded-lg">
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Fire Detection Mask</h3>
+                    <img id="maskImage" src="" alt="Fire Detection Mask" class="w-full h-auto rounded-lg">
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Detected Fire Contours</h3>
+                    <img id="contourImage" src="" alt="Detected Fire Contours" class="w-full h-auto rounded-lg">
+                </div>
+            </div>
+            <div id="fireAlert" class="mt-6 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 hidden" role="alert">
+                <p class="font-bold">Alert</p>
+                <p>Fire detected in the satellite image! Please take necessary precautions.</p>
+            </div>
+
+            <div id="reportSection" class="mt-6 text-center hidden">
+                <button id="reportButton" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">119에 신고하기</button>
+                <p id="reportMessage" class="mt-4 text-gray-600 hidden">(가상) 119에 신고가 접수되었습니다.
+                    <span id="closestFireStationInfo"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div id="map" class="hidden"></div>
+    </div>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const demoImage = document.getElementById('demoImage');
+        const imageNameSection = document.getElementById('imageNameSection');
+        const imageNameElement = document.getElementById('imageName');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const resultDiv = document.getElementById('result');
+        const inputImage = document.getElementById('inputImage');
+        const maskImage = document.getElementById('maskImage');
+        const contourImage = document.getElementById('contourImage');
+        const fireAlert = document.getElementById('fireAlert');
+        const reportSection = document.getElementById('reportSection');
+        const reportButton = document.getElementById('reportButton');
+        const reportMessage = document.getElementById('reportMessage');
+        const noDataFound = document.getElementById('noDataFound');
+        const mapContainer = document.getElementById('map');
+        const processLargeImageToggle = document.getElementById('processLargeImageToggle');
+
+        let coordinates = {};
+        let closestFireStationInfo = null;
+        let closestFireStationMarker = null; // 소방서 마커를 저장할 변수
+        let map;
+        let processLargeImage = false;
+
+        function resetReportButton() {
+            reportMessage.classList.add('hidden');
+            reportButton.disabled = false;
+            reportButton.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function updateImageName(name) {
+            const fileName = name.split('/').pop(); // Ensure we get only the file name, not a path
+            imageNameElement.textContent = `Image Info : ${fileName}`;
+            imageNameSection.classList.remove('hidden');
+
+            // 새로운 이미지를 선택할 때마다 가장 가까운 소방서 정보를 초기화
+            closestFireStationInfo = null;
+            if (closestFireStationMarker) {
+                map.removeLayer(closestFireStationMarker); // 기존 마커 제거
+                closestFireStationMarker = null;
+            }
+            document.getElementById('closestFireStationInfo').textContent = ''; // 소방서 정보 텍스트 초기화
+        }
+        
+        function loadCoordinates() {
+            fetch('./static/coordinates.json')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Coordinates loaded:', data); // 로그를 통해 데이터를 확인합니다.
+                    coordinates = data;
+                    showCoordinates(imageNameElement.textContent.replace('Image Info : ', ''));
+                })
+                .catch(error => {
+                    console.error('Error loading coordinates:', error);
+                });
+        }
+
+        function initializeMap(lat, lon) {
+            if (map) {
+                map.remove();
+            }
+            mapContainer.style.display = 'block'; // Ensure map container is displayed
+            map = L.map(mapContainer).setView([lat, lon], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Uncomment below to add marker
+            // L.marker([lat, lon]).addTo(map)
+            //     .bindPopup('Fire detected here!')
+            //     .openPopup();
+        }
+
+        function showCoordinates(imageName) {
+            console.log('Checking coordinates for image:', imageName); // Debug log
+
+            if (coordinates[imageName]) {
+                noDataFound.classList.add('hidden');
+                mapContainer.style.display = 'block';
+                // Extract the CENTER coordinates
+                const centerCoords = coordinates[imageName].CENTER;
+
+                if (centerCoords) {
+                    if (!map) {
+                        initializeMap(centerCoords[0], centerCoords[1]);
+                    } else {
+                        // Update existing map view
+                        map.setView([centerCoords[0], centerCoords[1]], 13);
+                    }
+                    mapContainer.classList.remove('hidden'); // Ensure map section is visible
+                    
+                    // 가장 가까운 소방서를 계산하고 표시
+                    fetch('./static/119_addresses.json')
+                        .then(response => response.json())
+                        .then(fireStationData => {
+                            closestFireStationInfo = getClosestFireStation(centerCoords, fireStationData.소방서);
+                            if (closestFireStationInfo) {
+                                const { name, distance, coordinates } = closestFireStationInfo;
+                                L.marker(coordinates).addTo(map)
+                                    .bindPopup(`<strong>${name}</strong><br>Distance: ${distance.toFixed(2)} km`)
+                                    .openPopup();
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error loading fire station data:', error);
+                        });
+
+                } else {
+                    mapContainer.classList.add('hidden'); // Hide map section if no coordinates
+                }
+            } else {
+                console.log('No data found for image:', imageName); // Debug log
+                noDataFound.classList.remove('hidden');
+                mapContainer.classList.add('hidden'); // Hide map section if no data
+                mapContainer.style.display = 'none'; 
+            }
+        }
+
+        function getClosestFireStation(centerCoords, fireStations) {
+            let closestStation = null;
+            let minDistance = Infinity;
+
+            fireStations.forEach(station => {
+                const stationName = Object.keys(station)[0];
+                const stationCoords = station[stationName];
+
+                // 두 지점 사이의 거리를 계산
+                const distance = calculateDistance(centerCoords[0], centerCoords[1], stationCoords[0], stationCoords[1]);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestStation = {
+                        name: stationName,
+                        distance: distance,
+                        coordinates: stationCoords
+                    };
+                }
+            });
+
+            return closestStation;
+        }
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // 지구 반경 (킬로미터)
+            const dLat = (lat2 - lat1) * (Math.PI / 180);
+            const dLon = (lon2 - lon1) * (Math.PI / 180);
+
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            const distance = R * c; // 거리 계산
+
+            return distance;
+        }
+
+        function processImage(file) {
+            resetReportButton();
+            loadingIndicator.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('processLargeImage', processLargeImage); // 서버에 processLargeImage 상태를 전달
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                loadingIndicator.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+                
+                inputImage.src = `data:image/png;base64,${data.input_image}`;
+                maskImage.src = `data:image/png;base64,${data.mask_image}`;
+                contourImage.src = `data:image/png;base64,${data.contour_image}`;
+                
+                if (data.fire_detected) {
+                    fireAlert.classList.remove('hidden');
+                    fireAlert.classList.add('pulse');
+                    reportSection.classList.remove('hidden');
+                } else {
+                    fireAlert.classList.add('hidden');
+                    fireAlert.classList.remove('pulse');
+                    reportSection.classList.add('hidden');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                loadingIndicator.classList.add('hidden');
+                alert('An error occurred while processing the image. Please try again.');
+            });
+        }
+        processLargeImageToggle.addEventListener('click', function() {
+            processLargeImage = !processLargeImage; // 상태를 반전
+            processLargeImageToggle.textContent = processLargeImage ? 'On' : 'Off';
+            processLargeImageToggle.classList.toggle('bg-blue-500');
+            processLargeImageToggle.classList.toggle('bg-green-500');
+            console.log(`Process Large Image is now ${processLargeImage ? 'On' : 'Off'}`);
+        });
+        
+        imageUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                updateImageName(file.name);
+                loadCoordinates();
+                processImage(file);
+            }
+        });
+
+        demoImage.addEventListener('change', function(event) {
+            const imageName = event.target.value;
+            if (imageName) {
+                updateImageName(imageName);
+                loadCoordinates();
+                resetReportButton();
+                loadingIndicator.classList.remove('hidden');
+                resultDiv.classList.add('hidden');
+                noDataFound.classList.add('hidden');
+
+                // Fix to ensure the correct image name is checked
+                showCoordinates(imageName);
+
+                fetch(`/predict_demo?image=${imageName}&processLargeImage=${processLargeImage}`)
+                .then(response => response.json())
+                .then(data => {
+                    loadingIndicator.classList.add('hidden');
+                    resultDiv.classList.remove('hidden');
+                    
+                    inputImage.src = `data:image/png;base64,${data.input_image}`;
+                    maskImage.src = `data:image/png;base64,${data.mask_image}`;
+                    contourImage.src = `data:image/png;base64,${data.contour_image}`;
+                    
+                    if (data.fire_detected) {
+                        fireAlert.classList.remove('hidden');
+                        fireAlert.classList.add('pulse');
+                        reportSection.classList.remove('hidden');
+                    } else {
+                        fireAlert.classList.add('hidden');
+                        fireAlert.classList.remove('pulse');
+                        reportSection.classList.add('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    loadingIndicator.classList.add('hidden');
+                    alert('An error occurred while processing the demo image. Please try again.');
+                });
+            }
+        });
+        
+        reportButton.addEventListener('click', function() {
+            reportMessage.classList.remove('hidden');
+            reportButton.disabled = true;
+            reportButton.classList.add('opacity-50', 'cursor-not-allowed');
+
+            // 가장 가까운 소방서 정보 추가
+            if (closestFireStationInfo) {
+                const fireStationText = `${closestFireStationInfo.name} (${closestFireStationInfo.distance.toFixed(2)} km)에 신고가 접수되었습니다.`;
+                document.getElementById('closestFireStationInfo').textContent = fireStationText;
+            }
+        });
+    </script>
+</body>
+</html>
