@@ -4,7 +4,7 @@
 - ONNX model surving with "PythonAnywhere"
 <br>
 
-<img src="[https://user-images.githubusercontent.com/51365114/119627750-716f3100-be47-11eb-8e83-686b23c2c161.png](https://github.com/user-attachments/assets/265382eb-d655-4ab7-827c-fecfc04ee297)  width="200" height="400"/>
+<img src="https://github.com/user-attachments/assets/265382eb-d655-4ab7-827c-fecfc04ee297  width="200" height="400"/>
 
 ## 대회 주제
 위성데이터를 활용하여 아름다운 제주섬의 문제를 발견하고, 이를 해결할 수 있는 아이디어 및 사업모델을 제안해주세요. 
