@@ -94,7 +94,9 @@ def predict():
     process_large = request.form.get('processLargeImage', 'false').lower() == 'true'
     print(process_large)
 
-    if process_large: pred_mask = process_large_image(image) if max(image.shape[:2]) > 256 else process_small_image(image)
+    if process_large: 
+        if max(image.shape[:2]) > 256: pred_mask = process_large_image(image)
+        else: pred_mask, image = process_small_image(image)
     else: pred_mask, image = process_small_image(image)
 
     seg = np.uint8(np.squeeze(pred_mask) * 255)
@@ -131,7 +133,9 @@ def predict_demo():
     # processLargeImage 값을 클라이언트로부터 읽어옴
     process_large = request.args.get('processLargeImage', 'false').lower() == 'true'
 
-    if process_large: pred_mask = process_large_image(image) if max(image.shape[:2]) > 256 else process_small_image(image)
+    if process_large: 
+        if max(image.shape[:2]) > 256: pred_mask = process_large_image(image)
+        else: pred_mask, image = process_small_image(image)
     else: pred_mask, image = process_small_image(image)
 
     seg = np.uint8(np.squeeze(pred_mask) * 255)
